@@ -1,41 +1,52 @@
-import { BoxBufferGeometry, Mesh, MeshBasicMaterial } from '../../../vendor/three/build/three.module.js';
+import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from '../../../vendor/three/build/three.module.js';
 
 function createCube() {
-    // create a geometry
+
     const geometry = new BoxBufferGeometry(1, 1, 1);
-  
-    // create a default (white) Basic material
-    const material = new MeshBasicMaterial();
-  
-    // create a Mesh containing the geometry and material
+
+    const qualities = {
+      color: 'peachpuff',
+    }
+    const material = new MeshStandardMaterial(qualities);
 
     const cubes = [];
 
-    function generateCubes(
-      number, 
-      xPosition, 
-      yPosition, 
-      xSpacing, 
-      ySpacing
-      ) {
+    const cubeParameters = {
+      number: 10,
+      xPosition: -5,
+      yPosition: -3,
+      xSpacing: 1.5,
+      ySpacing: 0.75,
+      rotation: 0.5,
+      rotationInc: 0.2
+    }
+
+    function generateCubes(cubeParameters) {
+
       let cubeIndex = 0;
-      let cubePositionX = xPosition;
-      let cubePositionY = yPosition;
+      const num = cubeParameters.number;
+      let posX = cubeParameters.xPosition;
+      let posY = cubeParameters.yPosition;
+      let spcX = cubeParameters.xSpacing;
+      let spcY = cubeParameters.ySpacing;
+      let rot = cubeParameters.rotation;
+      let rotInc = cubeParameters.rotationInc;
   
-      while (cubeIndex < number) {
+      while (cubeIndex < num) {
         cubes.push(new Mesh(geometry, material));
         cubeIndex++;
       }
   
       for (let i = 0; i < cubes.length; i++) {
-        cubes[i].position.set(cubePositionX, cubePositionY, 0);
-        cubePositionX+=xSpacing;
-        cubePositionY+=ySpacing;
-        console.log(cubes[i]);
+        cubes[i].position.set((posX/5), posY, 0);
+        cubes[i].rotation.set(rot, -(rot*2), 0);
+        rot+=rotInc;
+        posX+=spcX;
+        posY+=spcY;
       }
     }
 
-    generateCubes(10, -5, -3, 1.5, .75);
+    generateCubes(cubeParameters);
   
     return cubes;
   }

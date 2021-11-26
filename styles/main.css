@@ -22,6 +22,8 @@ body {
   }
   
   #scene-container {
+    display: flex;
+    justify-content: center;
     /* tell our scene container to take up the full page */
     position: absolute;
     width: 100%;
@@ -32,4 +34,8 @@ body {
       background to prevent flashing on load
     */
     background-color: skyblue;
+  }
+
+  #loader {
+    align-self: center;
   }
