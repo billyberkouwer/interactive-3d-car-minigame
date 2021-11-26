@@ -7,6 +7,7 @@ function createCube() {
     const qualities = {
       color: 'peachpuff',
     }
+    
     const material = new MeshStandardMaterial(qualities);
 
     const cubes = [];
@@ -14,10 +15,10 @@ function createCube() {
     const cubeParameters = {
       number: 10,
       xPosition: -5,
-      yPosition: -3,
-      xSpacing: 1.5,
-      ySpacing: 0.75,
-      rotation: 0.5,
+      yPosition: -2,
+      xSpacing: 1,
+      ySpacing: .3,
+      rotation: 1,
       rotationInc: 0.2
     }
 
@@ -38,8 +39,15 @@ function createCube() {
       }
   
       for (let i = 0; i < cubes.length; i++) {
-        cubes[i].position.set((posX/5), posY, 0);
-        cubes[i].rotation.set(rot, -(rot*2), 0);
+        let random = Math.random()*2;
+        cubes[i].position.set(posX, posY, 0);
+        cubes[i].rotation.set(rot, rot, 0)
+        cubes[i].scale.set(random, random, random);
+        cubes[i].tick = () => {
+          cubes[i].rotation.x += 0.01 ;
+          cubes[i].rotation.y += 0.01;
+          cubes[i].rotation.z += 0.01;
+        }
         rot+=rotInc;
         posX+=spcX;
         posY+=spcY;
