@@ -7,6 +7,7 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { createCube2 } from './components/cube2.js';
 import { Loop } from './systems/loop.js';
+import { ObjectLoader } from "../../../vendor/three/build/three.module.js";
 
 let camera;
 let scene;
@@ -42,7 +43,6 @@ class World {
         cube3.rotation.y = Math.PI/3;
 
         loop.updateables.push(cube2, cube3, camera);
-
 
         const resizer = new Resizer(container, camera, renderer);     
       }

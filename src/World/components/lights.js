@@ -2,7 +2,7 @@ import { AmbientLight, DirectionalLight } from "../../../vendor/three/build/thre
 
 function createLights() {
     const light = new DirectionalLight('white', 8);
-    const ambientLight = new AmbientLight('0x404040');
+    const ambientLight = new AmbientLight('blue');
 
     light.position.set(10,10,10);
     ambientLight.position.set(2,2,0);
