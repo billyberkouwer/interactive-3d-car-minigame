@@ -24,7 +24,7 @@ class World {
         const light = createLights();
         scene.add(light[0],light[1]);
         const cubes = createCube();
-        
+
         for (let i = 0; i < cubes.length; i++) {
           scene.add(cubes[i]);
           loop.updateables.push(cubes[i])
@@ -41,7 +41,7 @@ class World {
         cubes[4].add(cube3);
         cube3.rotation.y = Math.PI/3;
 
-        loop.updateables.push(cube2, cube3);
+        loop.updateables.push(cube2, cube3, camera);
 
 
         const resizer = new Resizer(container, camera, renderer);     
