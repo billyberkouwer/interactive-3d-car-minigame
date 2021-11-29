@@ -9,6 +9,7 @@ import { createCube2 } from './components/cube2.js';
 import { Loop } from './systems/loop.js';
 import { OBJLoader } from '../../vendor/three/build/OBJLoader.js';
 import { OrbitControls } from '../../vendor/three/build/OrbitControls.js';
+import { MeshStandardMaterial } from '../../vendor/three/build/three.module.js';
 
 let camera;
 let scene;
@@ -58,10 +59,13 @@ class World {
 
         const loader = new OBJLoader();
 
+        const shinyMaterial = new MeshStandardMaterial({color: 'blue', roughness: .2, metalness: 1})
+
         loader.load(
           '../../src/World/models/untitled.obj',
           function( object ) {
             const suzanne = object;
+            
             scene.add(suzanne);
             suzanne.position.y = 4;
         },function ( xhr ) {
