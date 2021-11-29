@@ -1,0 +1,22 @@
+{
+  "name": "three-js-course",
+  "version": "1.0.0",
+  "description": "three-js course files",
+  "main": "/src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billyberkouwer/three-js-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billyberkouwer/three-js-course/issues"
+  },
+  "homepage": "https://github.com/billyberkouwer/three-js-course#readme",
+  "dependencies": {
+    "three": "^0.135.0"
+  }
+}

@@ -7,12 +7,14 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { createCube2 } from './components/cube2.js';
 import { Loop } from './systems/loop.js';
-import { ObjectLoader } from "../../../vendor/three/build/three.module.js";
+import { OBJLoader } from '../../vendor/three/build/OBJLoader.js';
+import { OrbitControls } from '../../vendor/three/build/OrbitControls.js';
 
 let camera;
 let scene;
 let renderer;
 let loop;
+let controls;
 
 class World {
   constructor(container) {
@@ -21,7 +23,15 @@ class World {
         renderer = createRenderer();
         loop = new Loop(camera, scene, renderer);
         container.append(renderer.domElement);
+        controls = new OrbitControls( camera, renderer.domElement );
 
+        //controls.autoRotate = true;
+        controls.enableDamping = true;
+        controls.dampingFactor = .1;
+        controls.tick = () => {
+          controls.update();
+        }
+        
         const light = createLights();
         scene.add(light[0],light[1]);
         const cubes = createCube();
@@ -42,9 +52,24 @@ class World {
         cubes[4].add(cube3);
         cube3.rotation.y = Math.PI/3;
 
-        loop.updateables.push(cube2, cube3, camera);
+        loop.updateables.push(cube2, cube3, camera, controls);
 
-        const resizer = new Resizer(container, camera, renderer);     
+        const resizer = new Resizer(container, camera, renderer); 
+
+        const loader = new OBJLoader();
+
+        loader.load(
+          '../../src/World/models/untitled.obj',
+          function( object ) {
+            const suzanne = object;
+            scene.add(suzanne);
+            suzanne.position.y = 4;
+        },function ( xhr ) {
+		    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+	      },
+	      function ( error ) {
+	      	console.log( 'An error happened' );
+	      })    
       }
 
       render() {
