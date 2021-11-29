@@ -18,7 +18,7 @@ class Loop {
     };
 
     stop(){
-        this.renderer.setAnimationLoop(null);
+        this.renderer.setAnimationLoop(null)
     };
 
     tick(){

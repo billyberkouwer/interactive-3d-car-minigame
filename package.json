@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/billyberkouwer/three-js-course#readme",
   "dependencies": {
+    "simplex-noise": "^3.0.0",
     "three": "^0.135.0"
   }
 }

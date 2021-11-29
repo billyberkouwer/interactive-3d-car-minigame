@@ -1,11 +1,13 @@
 import { World } from './World/World.js';
 
-function main() {
+async function main() {
   const container = document.querySelector('#scene-container');
   const startbut = document.querySelector('#start');
   const stopbut = document.querySelector('#stop');
 
   const world = new World(container);
+
+  await world.init();
 
   world.start()
   
@@ -21,4 +23,6 @@ function main() {
 
 }
 
-main();
+main().catch((err) => {
+  console.log(err);
+});
