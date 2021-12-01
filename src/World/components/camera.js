@@ -12,7 +12,7 @@ function createCamera() {
     const startPos = camera.position.set(0,0,50);
 
     camera.tick = (delta) => {
-
+      
     }
   
     return camera;

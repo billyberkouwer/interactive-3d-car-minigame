@@ -45,3 +45,9 @@ body {
     right: 5px;
     top: 30px;
   }
+
+  #change-position {
+    position: absolute;
+    right: 5px;
+    top: 55px;
+  }

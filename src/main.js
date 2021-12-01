@@ -18,7 +18,6 @@ function main() {
     world.render();
   })
 
-
 }
 
 main();

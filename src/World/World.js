@@ -8,8 +8,7 @@ import { Resizer } from './systems/Resizer.js';
 import { createCube2 } from './components/cube2.js';
 import { Loop } from './systems/loop.js';
 import { OBJLoader } from '../../vendor/three/build/OBJLoader.js';
-import { TextureLoader } from '../../vendor/three/build/three.module.js';
-import { OrbitControls } from '../../vendor/three/build/OrbitControls.js';
+import { AmbientLight, TextureLoader } from '../../vendor/three/build/three.module.js';
 import { createControls } from './systems/controls.js';
 import { MeshStandardMaterial } from '../../vendor/three/build/three.module.js';
 
@@ -26,9 +25,10 @@ class World {
         const controls = createControls(camera, renderer.domElement)
         loop = new Loop(camera, scene, renderer);
         container.append(renderer.domElement);
+        const changepos = document.querySelector('#change-position')
+
+        loop.updateables.push(controls)
         
-        const light = createLights();
-        scene.add(light[0],light[1]);
         const cubes = createCube();
 
         for (let i = 0; i < cubes.length; i++) {
@@ -83,6 +83,44 @@ class World {
 	      function ( error ) {
 	      	console.log( 'An error happened' );
 	      })    
+        controls.saveState()
+
+        camera.position.set(2,2,2)
+
+        controls.update()
+
+        controls.reset()
+
+
+        controls.addEventListener('change', () => {
+          this.render();
+        });
+
+        let click = 0;
+
+        changepos.addEventListener('click', () => {
+          let random1 = Math.random() * 20;
+          controls.enabled = false;
+            camera.tick = (delta) => {
+              camera.position.x += random1 * delta;
+              camera.position.z -= random1 * delta / 2;
+            };
+            setTimeout(function() {
+              camera.tick = () => {
+                return;
+              };
+              controls.enabled = true;
+            }, 3000)
+          })
+
+          const { ambientLight, light } = createLights();
+          scene.add(camera)
+          camera.add(light)
+          light.tick = () => {
+            
+          }
+          loop.updateables.push(light)
+        
       }
 
       render() {
