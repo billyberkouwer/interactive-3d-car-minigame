@@ -7,7 +7,7 @@ function createMeshGroup() {
 
     const sphere = createSphere();
 
-    for (let i = 0; i < 1; i += 0.075) {
+    for (let i = 0; i < 4; i += 0.05) {
         const clonedSphere = sphere.clone();
         clonedSphere.position.x = Math.cos(2 * Math.PI * i);
         clonedSphere.position.y = Math.sin(2 * Math.PI * i);

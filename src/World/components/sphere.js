@@ -1,7 +1,7 @@
 import { SphereBufferGeometry, MeshStandardMaterial, Mesh, TextureLoader, RepeatWrapping } from "../../../vendor/three/build/three.module.js";
 import { createTexture } from "../textures/generatedColor.js";
 
-const radius = .25;
+const radius = .175;
 const widthSegments = 64;
 const heightSegments = 64;
 const color = 'red';

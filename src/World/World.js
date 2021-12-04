@@ -8,7 +8,7 @@ import { Resizer } from './systems/Resizer.js'
 import { Loop } from './systems/loop.js';
 import { createControls } from './systems/controls.js';
 import { createLights } from './components/lights.js';
-import { Group, Sphere } from '../../vendor/three/build/three.module.js';
+import { Group, Sphere, MathUtils } from '../../vendor/three/build/three.module.js';
 
 let camera;
 let scene;
