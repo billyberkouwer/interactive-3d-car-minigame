@@ -2,8 +2,8 @@ import { SphereBufferGeometry, MeshStandardMaterial, Mesh, TextureLoader, Repeat
 import { createTexture } from "../textures/generatedColor.js";
 
 const radius = .175;
-const widthSegments = 64;
-const heightSegments = 64;
+const widthSegments = 12;
+const heightSegments = 12;
 const color = 'red';
 const roughness = 0.2;
 
@@ -21,6 +21,7 @@ function createSphere() {
     const material = new MeshStandardMaterial({
         map: texture,
         roughnessMap: texture,
+        flatShading: true,
     })
 
     console.log(material)

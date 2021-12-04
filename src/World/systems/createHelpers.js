@@ -1,0 +1,14 @@
+import { AxesHelper, GridHelper } from '../../../vendor/three/build/three.module.js';
+
+function createAxesHelper() {
+  const helper = new AxesHelper(6);
+  helper.position.set(-3.5, 0, -3.5);
+  return helper;
+}
+
+function createGridHelper() {
+  const helper = new GridHelper(20);
+  return helper;
+}
+
+export { createAxesHelper, createGridHelper };
