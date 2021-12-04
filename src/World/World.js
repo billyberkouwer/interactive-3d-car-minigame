@@ -3,6 +3,7 @@ import { createScene } from './components/scene.js';
 import { Car } from './components/Car/car.js';
 
 import { createRenderer } from './systems/renderer.js';
+import { setupKeyControls } from './systems/keyboardControls.js'
 import { createAxesHelper, createGridHelper } from './systems/createHelpers.js';
 import { Resizer } from './systems/Resizer.js'
 import { Loop } from './systems/loop.js';
@@ -19,6 +20,7 @@ let controls;
 let axes;
 let grid;
 let changePos;
+let keyControls
 
 class World {
   constructor(container) {
@@ -42,7 +44,9 @@ class World {
         car.position.y = .875;
 
         scene.add(light, ambientLight, axes, grid, car)
+        keyControls = setupKeyControls(container, car);
         loop.updateables.push(controls, camera, car)
+
         const resizer = new Resizer(container, camera, renderer)
       }
 
