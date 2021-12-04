@@ -2,9 +2,9 @@ import {  DirectionalLight, HemisphereLight } from "../../../vendor/three/build/
 
 function createLights() {
     const light = new DirectionalLight('white', 4)
-    const ambientLight = new HemisphereLight(0xffffbb, 0x080820, 1);
+    const ambientLight = new HemisphereLight('white', 'white', 2);
 
-    return { ambientLight, light }
+    return { light, ambientLight }
 }
 
 export { createLights }

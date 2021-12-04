@@ -1,11 +1,11 @@
 import { SphereBufferGeometry, MeshStandardMaterial, Mesh, TextureLoader, RepeatWrapping } from "../../../vendor/three/build/three.module.js";
+import { createTexture } from "../textures/generatedColor.js";
 
-const radius = 2.5;
-const widthSegments = 16;
-const heightSegments = 16;
-const color = 'lightblue';
-const metalness = .5;
-const roughness = 0.5;
+const radius = .25;
+const widthSegments = 64;
+const heightSegments = 64;
+const color = 'red';
+const roughness = 0.2;
 
 function createSphere() {
     const geometry = new SphereBufferGeometry(
@@ -16,25 +16,16 @@ function createSphere() {
 
     const texloader = new TextureLoader()
 
-    const bump = texloader.load('../../../src/World/textures/bumpy-sphere-map.png')
+    const texture = createTexture();
 
-    bump.wrapS = RepeatWrapping;
-    bump.wrapT = RepeatWrapping;
-    bump.scale = 2;
+    const material = new MeshStandardMaterial({
+        map: texture,
+        roughnessMap: texture,
+    })
 
-    const texture = new MeshStandardMaterial({
-        color,
-        metalness,
-        roughness,  
-    }
-    )
-
-    texture.bumpMap = bump;
-    texture.bumpScale = .01;
+    console.log(material)
     
-    
-
-    const sphere = new Mesh(geometry, texture)
+    const sphere = new Mesh(geometry, material)
 
     return sphere;
 }
