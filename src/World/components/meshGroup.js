@@ -12,7 +12,7 @@ function createMeshGroup() {
         clonedSphere.position.x = Math.cos(2 * Math.PI * i);
         clonedSphere.position.y = Math.sin(2 * Math.PI * i);
         clonedSphere.position.z = -i * 5;
-        clonedSphere.scale.multiplyScalar(-0.1 - i);
+        clonedSphere.scale.multiplyScalar(i);
         group.add(clonedSphere)
     }
 
