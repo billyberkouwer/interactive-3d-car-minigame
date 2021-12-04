@@ -11,9 +11,7 @@ function createCamera() {
     // move the camera back so we can view the scene
     const startPos = camera.position.set(0,0,25);
 
-    camera.tick = (delta) => {
-      
-    }
+    camera.tick = (delta) => {}
   
     return camera;
   }

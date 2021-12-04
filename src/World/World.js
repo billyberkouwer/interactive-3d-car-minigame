@@ -7,6 +7,7 @@ import { createAxesHelper, createGridHelper } from './systems/createHelpers.js';
 import { Resizer } from './systems/Resizer.js'
 import { Loop } from './systems/loop.js';
 import { createControls } from './systems/controls.js';
+import { createChangePosition } from './systems/changePosition.js';
 import { createLights } from './components/lights.js';
 import { MathUtils } from '../../vendor/three/build/three.module.js';
 
@@ -29,6 +30,8 @@ class World {
         container.append(renderer.domElement);
         axes = createAxesHelper();
         grid = createGridHelper();
+        const changePosButton = container.querySelector('#change-position')
+        changePos = createChangePosition(changePosButton, controls, camera);
 
         const { light, ambientLight } = new createLights();
         light.position.set(10, 10, 4)
