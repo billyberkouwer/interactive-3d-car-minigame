@@ -41,10 +41,17 @@ class World {
         //---- create meshes
 
         const car = new Car();
+        console.log(car)
         car.position.y = .875;
 
+        camera.tick = () => {
+          camera.lookAt(car.position)
+        }
+
+        car.add(camera)
+
         scene.add(light, ambientLight, axes, grid, car)
-        keyControls = setupKeyControls(container, car);
+        keyControls = setupKeyControls(car, camera);
         loop.updateables.push(controls, camera, car)
 
         const resizer = new Resizer(container, camera, renderer)
