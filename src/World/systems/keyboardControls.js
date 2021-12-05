@@ -1,5 +1,5 @@
-function setupKeyControls(car, camera) {
-    var objectSpeed = 0.1;
+function setupKeyControls(object, camera) {
+    var objectSpeed = 0.2;
 
     var keys = {};
 
@@ -9,30 +9,33 @@ function setupKeyControls(car, camera) {
         keys[keyCode] = isKeyDown;
     };
 
-    car.tick = (delta) => {
+    object.tick = (delta) => {
+        const rotation = Math.PI / 2 * delta;
+        const xCos = (objectRotation) => objectSpeed * Math.cos(objectRotation);
+        const ySin = (objectRotation) => objectSpeed * Math.sin(objectRotation);
         if (keys[87] && keys[68]) {
-            car.rotation.y -= Math.PI / 2 * delta;
-            car.position.x += objectSpeed * Math.cos(car.rotation.y);
-            car.position.z -= objectSpeed * Math.sin(car.rotation.y);
+            object.rotation.y -= rotation;
+            object.position.x += xCos(object.rotation.y);
+            object.position.z -= ySin(object.rotation.y);
         } else if (keys[87] && keys[65]) {
-            car.rotation.y += Math.PI / 2 * delta;
-            car.position.x += objectSpeed * Math.cos(car.rotation.y);
-            car.position.z -= objectSpeed * Math.sin(car.rotation.y);
+            object.rotation.y += rotation;
+            object.position.x += xCos(object.rotation.y);
+            object.position.z -= ySin(object.rotation.y);
         } else if (keys[83] && keys[68]) {
-            car.rotation.y += Math.PI / 2 * delta;
-            car.position.x -= objectSpeed * Math.cos(car.rotation.y);
-            car.position.z += objectSpeed * Math.sin(car.rotation.y);
+            object.rotation.y += rotation;
+            object.position.x -= xCos(object.rotation.y);
+            object.position.z += ySin(object.rotation.y);
         } else if (keys[83] && keys[65]) {
-            car.rotation.y -= Math.PI / 2 * delta;
-            car.position.x -= objectSpeed * Math.cos(car.rotation.y);
-            car.position.z += objectSpeed * Math.sin(car.rotation.y);
+            object.rotation.y -= rotation;
+            object.position.x -= xCos(object.rotation.y);
+            object.position.z += ySin(object.rotation.y);
         }
          else if (keys[87]) {
-            car.position.x += objectSpeed * Math.cos(car.rotation.y);
-            car.position.z -= objectSpeed * Math.sin(car.rotation.y);
+            object.position.x += xCos(object.rotation.y);
+            object.position.z -= ySin(object.rotation.y);
         } else if (keys[83]) {
-            car.position.x -= objectSpeed * Math.cos(car.rotation.y);
-            car.position.z += objectSpeed * Math.sin(car.rotation.y);
+            object.position.x -= xCos(object.rotation.y);
+            object.position.z += ySin(object.rotation.y);
         }
     }
 

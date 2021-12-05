@@ -1,5 +1,6 @@
 import { Group, MathUtils } from "../../../../vendor/three/build/three.module.js";
 import { createMeshes } from "./carMeshes.js";
+import { setupKeyControls } from "../../systems/keyboardControls.js";
 
 const wheelSpin = MathUtils.degToRad(24)
 
