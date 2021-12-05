@@ -1,8 +1,8 @@
 import { Color, DataTexture, RGBFormat, Uint8BufferAttribute, LuminanceFormat, UnsignedByteType, NearestFilter, Uint8Attribute } from "../../../vendor/three/build/three.module.js";
 
 function createTexture() {
-    const width = 64;
-    const height = 64;
+    const width = 2056;
+    const height = 2056;
     
     const size = width * height;
 
@@ -21,8 +21,6 @@ function createTexture() {
     }
 
     const averagedUint8Arr = Uint8Array.from(averagedData)
-    console.log(averagedUint8Arr)
-    console.log(data)
 
     var texture = new DataTexture(averagedUint8Arr, width, height, RGBFormat);
 

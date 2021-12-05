@@ -11,6 +11,7 @@ import { createControls } from './systems/controls.js';
 import { createChangePosition } from './systems/changePosition.js';
 import { createLights } from './components/lights.js';
 import { MathUtils } from '../../vendor/three/build/three.module.js';
+import { createPlane } from './components/plane.js';
 
 let camera;
 let scene;
@@ -40,9 +41,12 @@ class World {
 
         //---- create meshes
 
+        const plane = createPlane()
+        scene.add(plane)
+
         const car = new Car();
         console.log(car)
-        car.position.y = .875;
+        car.position.y = .9;
 
         camera.tick = () => {
           camera.lookAt(car.position)

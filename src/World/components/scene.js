@@ -1,9 +1,12 @@
-import { Color, Scene } from '../../../vendor/three/build/three.module.js';
+import { Color, Scene, TextureLoader } from '../../../vendor/three/build/three.module.js';
 
 function createScene() {
     const scene = new Scene();
+
+    const loader = new TextureLoader()
+    const background = loader.load('../../src/World/textures/935131.jpg')
   
-    scene.background = new Color('darkgray');
+    scene.background = background;
   
     return scene;
   }
