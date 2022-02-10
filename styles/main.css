@@ -60,6 +60,8 @@ body {
 
   #controls-div {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     width: 50%;
     margin: 5px;
@@ -70,4 +72,6 @@ body {
 
   ul {
     list-style-type: none;
+    padding: 5px;
+    margin: 0px;
   }
