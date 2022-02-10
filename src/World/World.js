@@ -34,7 +34,6 @@ class World {
         axes = createAxesHelper();
         grid = createGridHelper();
         const changePosButton = container.querySelector('#change-position')
-        changePos = createChangePosition(changePosButton, controls, camera);
 
         const { light, ambientLight } = new createLights();
         light.position.set(10, 10, 4)
@@ -45,6 +44,7 @@ class World {
         scene.add(plane)
 
         const car = new Car();
+        changePos = createChangePosition(changePosButton, controls, camera, car);
         console.log(car)
         car.position.y = .9;
 
